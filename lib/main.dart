@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tunceducation/core/core.dart';
+import 'package:tunceducation/core/services/injection_container.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await init();
   runApp(const MyApp());
 }
 
