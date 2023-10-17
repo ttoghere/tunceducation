@@ -7,7 +7,8 @@ abstract class Failure extends Equatable {
   final String message; // A descriptive error message.
   final dynamic statusCode; // The status code associated with the error.
 
-  String get errorMessage => "$statusCode Error: $message";
+  String get errorMessage =>
+      "$statusCode${statusCode is String ? "" : "Error"} : $message";
 
   @override
   List<dynamic> get props => [message, statusCode];

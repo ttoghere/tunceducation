@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tunceducation/core/utils/utils.dart';
 import 'package:tunceducation/src/auth/data/models/user_model.dart';

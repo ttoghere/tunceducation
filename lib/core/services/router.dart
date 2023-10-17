@@ -12,7 +12,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _pageBuilder(
         (_) => BlocProvider(
           create: (context) => s1<OnBoardingCubit>(),
-          child: OnBoardingScreen(),
+          child: const OnBoardingScreen(),
         ),
         settings: settings,
       );

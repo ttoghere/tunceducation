@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
 class LocalUser extends Equatable {
@@ -62,4 +64,45 @@ class LocalUser extends Equatable {
           followers: const [],
           following: const [],
         );
+
+  LocalUser copyWith({
+    String? uid,
+    String? email,
+    String? profilePic,
+    String? bio,
+    int? points,
+    String? fullName,
+    List<String>? enrolledCourseIds,
+    List<String>? following,
+    List<String>? groupId,
+    List<String>? followers,
+  }) {
+    return LocalUser(
+      uid: uid ?? this.uid,
+      email: email ?? this.email,
+      profilePic: profilePic ?? this.profilePic,
+      bio: bio ?? this.bio,
+      points: points ?? this.points,
+      fullName: fullName ?? this.fullName,
+      enrolledCourseIds: enrolledCourseIds ?? this.enrolledCourseIds,
+      following: following ?? this.following,
+      groupId: groupId ?? this.groupId,
+      followers: followers ?? this.followers,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'uid': uid,
+      'email': email,
+      'profilePic': profilePic,
+      'bio': bio,
+      'points': points,
+      'fullName': fullName,
+      'enrolledCourseIds': enrolledCourseIds,
+      'following': following,
+      'groupId': groupId,
+      'followers': followers,
+    };
+  }
 }
