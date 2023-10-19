@@ -38,11 +38,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           listener: (context, state) {
             // Listen to changes in the OnBoardingCubit's state and take action accordingly.
             if (state is OnBoardingStatus && !state.isFirstTimer) {
-              // If the user is not a first-time user, navigate to the home screen.
-              Navigator.pushReplacementNamed(context, '/home');
+              Navigator.of(context).pushReplacementNamed("/home");
             } else if (state is UserCached) {
-              // If the user data is cached, you can implement a specific action here.
-              // TODO(User-Cached-Handler): Implement the appropriate action.
+              Navigator.of(context)
+                  .pushReplacementNamed(OnBoardingScreen.routeName);
             }
           },
           builder: (context, state) {

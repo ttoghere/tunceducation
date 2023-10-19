@@ -97,8 +97,8 @@ void main() {
       expect: () {
         // Başarılı durumlar için beklenen durumları oluşturun ve döndürün.
         return [
-          CheckingIfUserIsFirstTimer(),
-          OnBoardingStatus(isFirstTimer: false),
+          const CheckingIfUserIsFirstTimer(),
+          const OnBoardingStatus(isFirstTimer: false),
         ];
       },
       verify: (_) {
