@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tunceducation/core/common/app/providers/user_provider.dart';
 import 'package:tunceducation/core/core.dart';
 import 'package:tunceducation/core/services/injection_container.dart';
-import 'package:tunceducation/src/dashboard/providers/dashboard_controller.dart';
+import 'package:tunceducation/src/dashboard/presentation/providers/dashboard_controller.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -13,11 +13,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebaseUIAuth.configureProviders(
-    [
-      EmailAuthProvider(),
-    ],
-  );
+  FirebaseUIAuth.configureProviders([EmailAuthProvider()]);
   await init();
   runApp(const MyApp());
 }

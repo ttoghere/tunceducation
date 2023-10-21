@@ -18,19 +18,19 @@ class TabNavigator extends ChangeNotifier {
   TabItem get currentPage => _navigationStack.last;
 
   // Yeni bir sekme sayfasını geçmişe eklemek için kullanılır.
-  void push(TabItem page) {
+  push(TabItem page) {
     _navigationStack.add(page);
     notifyListeners();
   }
 
   // Bir önceki sayfayı geçmişten kaldırmak için kullanılır.
-  void pop() {
+  pop() {
     if (_navigationStack.length > 1) _navigationStack.removeLast();
     notifyListeners();
   }
 
   // Geçmişi başlangıç sayfasına döndürmek için kullanılır.
-  void popToRoot() {
+  popToRoot() {
     _navigationStack
       ..clear()
       ..add(_initialPage);
@@ -38,13 +38,13 @@ class TabNavigator extends ChangeNotifier {
   }
 
   // Belirli bir sayfaya kadar geçmişi temizlemek için kullanılır.
-  void popTo(TabItem page) {
+  popTo(TabItem page) {
     _navigationStack.remove(page);
     notifyListeners();
   }
 
   // Belirli bir sayfaya kadar geçmişi temizlemek için kullanılır.
-  void popUntil(TabItem? page) {
+  popUntil(TabItem? page) {
     if (page == null) return popToRoot();
     if (_navigationStack.length > 1) {
       _navigationStack.removeRange(1, _navigationStack.indexOf(page) + 1);
@@ -53,7 +53,7 @@ class TabNavigator extends ChangeNotifier {
   }
 
   // Belirli bir sayfaya gitmek ve geçmişi temizlemek için kullanılır.
-  void pushAndRemoveUntil(TabItem page) {
+  pushAndRemoveUntil(TabItem page) {
     _navigationStack
       ..clear()
       ..add(page);

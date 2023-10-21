@@ -1,6 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
 class LocalUser extends Equatable {
@@ -51,7 +49,7 @@ class LocalUser extends Equatable {
     return "LocalUser(uid: $uid, email: $email, profilePic: $profilePic, bio: $bio, points: $points, fullName: $fullName, enrolledCourseIds: $enrolledCourseIds, following: $following, followers: $followers, groupIds: $groupId)";
   }
 
-  LocalUser.empty()
+const LocalUser.empty()
       : this(
           uid: "",
           email: "",
