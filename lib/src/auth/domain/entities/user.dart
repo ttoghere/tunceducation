@@ -12,6 +12,7 @@ class LocalUser extends Equatable {
   final List<String> following;
   final List<String> groupId;
   final List<String> followers;
+  bool get isAdmin => email == 'tuncinyo12@gmail.com';
   const LocalUser({
     required this.uid,
     required this.email,
@@ -49,7 +50,7 @@ class LocalUser extends Equatable {
     return "LocalUser(uid: $uid, email: $email, profilePic: $profilePic, bio: $bio, points: $points, fullName: $fullName, enrolledCourseIds: $enrolledCourseIds, following: $following, followers: $followers, groupIds: $groupId)";
   }
 
-const LocalUser.empty()
+  const LocalUser.empty()
       : this(
           uid: "",
           email: "",

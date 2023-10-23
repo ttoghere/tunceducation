@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:tunceducation/core/common/features/course/data/datasources/course_remote_data_src.dart';
-import 'package:tunceducation/core/common/features/course/domain/entities/course.dart';
-import 'package:tunceducation/core/common/features/course/domain/repos/course_repo.dart';
 import 'package:tunceducation/core/errors/errors.dart';
 import 'package:tunceducation/core/utils/utils.dart';
+import 'package:tunceducation/src/course/data/datasources/course_remote_data_src.dart';
+import 'package:tunceducation/src/course/domain/entities/course.dart';
+import 'package:tunceducation/src/course/domain/repos/course_repo.dart';
 
 class CourseRepoImpl implements CourseRepo {
   const CourseRepoImpl(this._remoteDataSrc);

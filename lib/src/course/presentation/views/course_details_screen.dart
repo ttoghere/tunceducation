@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tunceducation/core/common/features/course/data/models/course_model.dart';
-import 'package:tunceducation/core/common/features/course/domain/entities/course.dart';
 import 'package:tunceducation/core/common/widgets/course_info_tile.dart';
 import 'package:tunceducation/core/common/widgets/expandable_text.dart';
 import 'package:tunceducation/core/common/widgets/gradient_background.dart';
 import 'package:tunceducation/core/extensions/context_extension.dart';
 import 'package:tunceducation/core/extensions/int_extensions.dart';
 import 'package:tunceducation/core/res/res.dart';
+import 'package:tunceducation/src/course/domain/entities/course.dart';
 
 class CourseDetailsScreen extends StatelessWidget {
   const CourseDetailsScreen(this.course, {super.key});
@@ -17,11 +16,6 @@ class CourseDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final course = (this.course as CourseModel).copyWith(
-      numberOfVideos: 2,
-      numberOfExams: 3,
-      numberOfMaterials: 30,
-    );
     return Scaffold(
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,

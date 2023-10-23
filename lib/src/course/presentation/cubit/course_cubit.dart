@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:tunceducation/src/course/domain/entities/course.dart';
+import 'package:tunceducation/src/course/domain/usecases/add_course.dart';
+import 'package:tunceducation/src/course/domain/usecases/get_courses.dart';
 import 'package:equatable/equatable.dart';
-import 'package:tunceducation/core/common/features/course/domain/entities/course.dart';
-import 'package:tunceducation/core/common/features/course/domain/usecases/add_course.dart';
-import 'package:tunceducation/core/common/features/course/domain/usecases/get_courses.dart';
 
 part 'course_state.dart';
 

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tunceducation/core/common/features/course/domain/entities/course.dart';
+import 'package:tunceducation/src/course/domain/entities/course.dart';
 import 'package:tunceducation/core/common/widgets/course_tile.dart';
 import 'package:tunceducation/core/common/widgets/gradient_background.dart';
 import 'package:tunceducation/core/common/widgets/nested_back_button.dart';
 import 'package:tunceducation/core/res/res.dart';
-
 import 'package:tunceducation/src/course/presentation/views/course_details_screen.dart';
 
 class AllCoursesView extends StatelessWidget {

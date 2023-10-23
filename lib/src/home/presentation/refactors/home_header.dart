@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:tunceducation/core/common/app/providers/user_provider.dart';
 import 'package:tunceducation/core/extensions/context_extension.dart';
 import 'package:tunceducation/src/home/presentation/widgets/tinder_cards.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});

@@ -1,9 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 
 import 'package:tunceducation/core/common/app/providers/user_provider.dart';
 import 'package:tunceducation/core/core.dart';
+import 'package:tunceducation/core/extensions/context_extension.dart';
+import 'package:tunceducation/core/services/injection_container.dart';
+import 'package:tunceducation/src/course/presentation/cubit/course_cubit.dart';
+import 'package:tunceducation/src/course/presentation/widgets/add_course_sheet.dart';
+import 'package:tunceducation/src/profile/presentation/widgets/admin_button.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({super.key});
@@ -70,7 +77,28 @@ class ProfileBody extends StatelessWidget {
                       infoValue: user.followers.length.toString()),
                 ),
               ],
-            )
+            ),
+            const SizedBox(height: 30),
+            if (context.currentUser!.isAdmin) ...[
+              AdminButton(
+                label: 'Add Course',
+                icon: IconlyLight.paper_upload,
+                onPressed: () {
+                  showModalBottomSheet<void>(
+                    context: context,
+                    backgroundColor: Colors.white,
+                    isScrollControlled: true,
+                    showDragHandle: true,
+                    elevation: 0,
+                    useSafeArea: true,
+                    builder: (_) => BlocProvider(
+                      create: (_) => s1<CourseCubit>(),
+                      child: const AddCourseSheet(),
+                    ),
+                  );
+                },
+              ),
+            ],
           ],
         );
       },

@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:tunceducation/core/common/features/course/domain/entities/course.dart';
+import 'package:tunceducation/src/course/domain/entities/course.dart';
 
 class CourseOfTheDayNotifier extends ChangeNotifier {
   Course? _courseOfTheDay;

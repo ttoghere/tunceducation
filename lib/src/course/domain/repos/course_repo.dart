@@ -1,5 +1,5 @@
-import 'package:tunceducation/core/common/features/course/domain/entities/course.dart';
-import '../../../../core/utils/utils.dart';
+import 'package:tunceducation/core/utils/utils.dart';
+import 'package:tunceducation/src/course/domain/entities/course.dart';
 
 abstract class CourseRepo {
   const CourseRepo();

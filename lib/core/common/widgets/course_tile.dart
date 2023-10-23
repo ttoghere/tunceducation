@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tunceducation/core/common/features/course/domain/entities/course.dart';
+import 'package:tunceducation/src/course/domain/entities/course.dart';
 
 class CourseTile extends StatelessWidget {
   const CourseTile({required this.course, super.key, this.onTap});

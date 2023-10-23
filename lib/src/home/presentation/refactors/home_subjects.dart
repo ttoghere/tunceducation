@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:tunceducation/core/common/features/course/domain/entities/course.dart';
+import 'package:tunceducation/src/course/domain/entities/course.dart';
 import 'package:tunceducation/core/common/widgets/course_tile.dart';
-import 'package:tunceducation/core/core.dart';
 import 'package:tunceducation/core/extensions/context_extension.dart';
+import 'package:tunceducation/core/res/res.dart';
 
 import 'package:tunceducation/src/course/presentation/views/all_courses_view.dart';
 import 'package:tunceducation/src/course/presentation/views/course_details_screen.dart';
 import 'package:tunceducation/src/home/presentation/widgets/section_header.dart';
+import 'package:flutter/material.dart';
 
 class HomeSubjects extends StatelessWidget {
   const HomeSubjects({required this.courses, super.key});

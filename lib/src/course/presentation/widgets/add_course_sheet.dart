@@ -1,11 +1,12 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tunceducation/core/common/features/course/data/models/course_model.dart';
+
 import 'package:tunceducation/core/common/widgets/titled_input_field.dart';
 import 'package:tunceducation/core/utils/constants.dart';
 import 'package:tunceducation/core/utils/core_utils.dart';
+import 'package:tunceducation/src/course/data/models/course_model.dart';
 import 'package:tunceducation/src/course/presentation/cubit/course_cubit.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddCourseSheet extends StatefulWidget {
   const AddCourseSheet({super.key});

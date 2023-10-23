@@ -1,11 +1,12 @@
 import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:tunceducation/core/common/features/course/domain/entities/course.dart';
 import 'package:tunceducation/core/errors/errors.dart';
 import 'package:tunceducation/src/chat/data/models/group_model.dart';
 import 'package:tunceducation/src/course/data/models/course_model.dart';
+import 'package:tunceducation/src/course/domain/entities/course.dart';
 
 abstract class CourseRemoteDataSrc {
   const CourseRemoteDataSrc();

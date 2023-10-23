@@ -37,6 +37,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         ),
         settings: settings,
       );
+    case CourseDetailsScreen.routeName:
+      return _pageBuilder(
+        (_) => CourseDetailsScreen(settings.arguments! as Course),
+        settings: settings,
+      );
     case SignUpScreen.routeName:
       return _pageBuilder(
         (_) => BlocProvider(

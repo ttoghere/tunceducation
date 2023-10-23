@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tunceducation/core/common/app/providers/course_of_the_day_notifier.dart';
 import 'package:tunceducation/core/common/app/providers/tab_navigation.dart';
 import 'package:tunceducation/core/common/app/providers/user_provider.dart';
-import 'package:tunceducation/core/common/features/course/domain/entities/course.dart';
 import 'package:tunceducation/src/auth/domain/entities/user.dart';
+import 'package:tunceducation/src/course/domain/entities/course.dart';
 
 extension ContextExt on BuildContext {
   ThemeData get theme => Theme.of(this);
