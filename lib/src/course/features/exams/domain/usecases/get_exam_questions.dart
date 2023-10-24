@@ -4,7 +4,8 @@ import 'package:tunceducation/src/course/features/exams/domain/entities/exam.dar
 import 'package:tunceducation/src/course/features/exams/domain/entities/exam_question.dart';
 import 'package:tunceducation/src/course/features/exams/domain/repos/exam_repo.dart';
 
-class GetExamQuestions extends UsecaseWithParams<List<ExamQuestion>, Exam> {
+class GetExamQuestions
+    extends FutureUsecaseWithParams<List<ExamQuestion>, Exam> {
   const GetExamQuestions(this._repo);
 
   final ExamRepo _repo;

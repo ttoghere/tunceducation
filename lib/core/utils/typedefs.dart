@@ -6,3 +6,6 @@ typedef ResultFuture<T> = Future<Either<Failure, T>>;
 
 // A custom type alias for a map of key-value pairs where keys are strings and values are dynamic.
 typedef DataMap = Map<String, dynamic>;
+
+typedef ResultStream<T> = Stream<Either<Failure, T>>;
+

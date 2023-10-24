@@ -1,5 +1,6 @@
 import 'package:tunceducation/core/common/views/loading_view.dart';
 import 'package:tunceducation/core/common/widgets/not_found_text.dart';
+import 'package:tunceducation/core/common/widgets/video_tile.dart';
 import 'package:tunceducation/core/extensions/context_extension.dart';
 import 'package:tunceducation/core/services/injection_container.dart';
 import 'package:tunceducation/core/utils/core_utils.dart';
@@ -58,7 +59,8 @@ class _HomeVideosState extends State<HomeVideos> {
                 ),
               ),
               const SizedBox(height: 20),
-              for (final video in state.videos.take(5)) const Placeholder(),
+              for (final video in state.videos.take(5))
+                VideoTile(video, tappable: true),
             ],
           );
         }

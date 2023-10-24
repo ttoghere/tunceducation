@@ -9,6 +9,29 @@ Future<void> init() async {
   await _initVideo();
   await _initMaterial();
   await _initExam();
+  await _initNotifications();
+}
+
+Future<void> _initNotifications() async {
+  s1
+    ..registerFactory(
+      () => NotificationCubit(
+        clear: s1(),
+        clearAll: s1(),
+        getNotifications: s1(),
+        markAsRead: s1(),
+        sendNotification: s1(),
+      ),
+    )
+    ..registerLazySingleton(() => Clear(s1()))
+    ..registerLazySingleton(() => ClearAll(s1()))
+    ..registerLazySingleton(() => GetNotifications(s1()))
+    ..registerLazySingleton(() => MarkAsRead(s1()))
+    ..registerLazySingleton(() => SendNotification(s1()))
+    ..registerLazySingleton<NotificationRepo>(() => NotificationRepoImpl(s1()))
+    ..registerLazySingleton<NotificationRemoteDataSrc>(
+      () => NotificationRemoteDataSrcImpl(firestore: s1(), auth: s1()),
+    );
 }
 
 Future<void> _initExam() async {

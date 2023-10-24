@@ -1,17 +1,35 @@
 import 'package:tunceducation/core/utils/utils.dart';
 
-// An abstract base class for use cases with parameters.
-abstract class UsecaseWithParams<Type, Params> {
-  const UsecaseWithParams();
+// // An abstract base class for use cases with parameters.
+// abstract class UsecaseWithParams<Type, Params> {
+//   const UsecaseWithParams();
 
-  // The method to be implemented by concrete use cases with parameters.
+//   // The method to be implemented by concrete use cases with parameters.
+//   ResultFuture<Type> call(Params params);
+// }
+
+// // An abstract base class for use cases without parameters.
+// abstract class UsecaseWithoutParams<Type> {
+//   const UsecaseWithoutParams();
+
+//   // The method to be implemented by concrete use cases without parameters.
+//   ResultFuture<Type> call();
+// }
+
+abstract class FutureUsecaseWithParams<Type, Params> {
+  const FutureUsecaseWithParams();
+
   ResultFuture<Type> call(Params params);
 }
 
-// An abstract base class for use cases without parameters.
-abstract class UsecaseWithoutParams<Type> {
-  const UsecaseWithoutParams();
+abstract class FutureUsecaseWithoutParams<Type> {
+  const FutureUsecaseWithoutParams();
 
-  // The method to be implemented by concrete use cases without parameters.
   ResultFuture<Type> call();
+}
+
+abstract class StreamUsecaseWithoutParams<Type> {
+  const StreamUsecaseWithoutParams();
+
+  ResultStream<Type> call();
 }

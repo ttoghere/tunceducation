@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 import 'package:tunceducation/core/common/app/providers/user_provider.dart';
 import 'package:tunceducation/core/core.dart';
+import 'package:tunceducation/src/home/presentation/widgets/notification_bell.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
@@ -17,7 +17,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {},
           icon: const Icon(Icons.search),
         ),
-        const Icon(IconlyLight.notification),
+        const NotificationBell(),
         Consumer<UserProvider>(
           builder: (_, provider, __) {
             return Padding(

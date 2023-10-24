@@ -6,6 +6,15 @@ import 'package:tunceducation/src/auth/presentation/blocs/auth/auth_bloc.dart';
 import 'package:tunceducation/src/auth/presentation/views/sign_in_screen.dart';
 import 'package:tunceducation/src/auth/presentation/views/sign_up_screen.dart';
 import 'package:tunceducation/src/course/domain/entities/course.dart';
+import 'package:tunceducation/src/course/features/exams/presentation/cubit/exam_cubit.dart';
+import 'package:tunceducation/src/course/features/exams/presentation/views/add_exam_views.dart';
+import 'package:tunceducation/src/course/features/materials/presentation/cubit/material_cubit.dart';
+import 'package:tunceducation/src/course/features/materials/presentation/views/add_material_view.dart';
+import 'package:tunceducation/src/course/features/videos/presentation/cubit/video_cubit.dart';
+import 'package:tunceducation/src/course/features/videos/presentation/view/add_video_view.dart';
+import 'package:tunceducation/src/course/features/videos/presentation/view/course_videos_view.dart';
+import 'package:tunceducation/src/course/features/videos/presentation/view/video_player_view.dart';
+import 'package:tunceducation/src/course/presentation/cubit/course_cubit.dart';
 import 'package:tunceducation/src/course/presentation/views/course_details_screen.dart';
 import 'package:tunceducation/src/dashboard/presentation/views/dashboard.dart';
 import 'package:tunceducation/src/on_boarding/data/datasources/on_boarding_local_data_source.dart';
@@ -17,5 +26,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../src/notifications/presentation/cubit/notification_cubit.dart';
 
 part 'router.main.dart';

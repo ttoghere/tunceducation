@@ -2,7 +2,7 @@ part of 'router.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case OnBoardingScreen.routeName:
+    case '/':
       final prefs = s1<SharedPreferences>();
       return _pageBuilder(
         (context) {
@@ -37,11 +37,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         ),
         settings: settings,
       );
-    case CourseDetailsScreen.routeName:
-      return _pageBuilder(
-        (_) => CourseDetailsScreen(settings.arguments! as Course),
-        settings: settings,
-      );
     case SignUpScreen.routeName:
       return _pageBuilder(
         (_) => BlocProvider(
@@ -59,6 +54,60 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case '/forgot-password':
       return _pageBuilder(
         (_) => const fui.ForgotPasswordScreen(),
+        settings: settings,
+      );
+    case CourseDetailsScreen.routeName:
+      return _pageBuilder(
+        (_) => CourseDetailsScreen(settings.arguments! as Course),
+        settings: settings,
+      );
+    case AddVideoView.routeName:
+      return _pageBuilder(
+        (_) => MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => s1<CourseCubit>()),
+            BlocProvider(create: (_) => s1<VideoCubit>()),
+            BlocProvider(create: (_) => s1<NotificationCubit>()),
+          ],
+          child: const AddVideoView(),
+        ),
+        settings: settings,
+      );
+    case AddMaterialView.routeName:
+      return _pageBuilder(
+        (_) => MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => s1<CourseCubit>()),
+            BlocProvider(create: (_) => s1<MaterialCubit>()),
+            BlocProvider(create: (_) => s1<NotificationCubit>()),
+          ],
+          child: const AddMaterialView(),
+        ),
+        settings: settings,
+      );
+    case AddExamView.routeName:
+      return _pageBuilder(
+        (_) => MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => s1<CourseCubit>()),
+            BlocProvider(create: (_) => s1<ExamCubit>()),
+            BlocProvider(create: (_) => s1<NotificationCubit>()),
+          ],
+          child: const AddExamView(),
+        ),
+        settings: settings,
+      );
+    case VideoPlayerView.routeName:
+      return _pageBuilder(
+        (_) => VideoPlayerView(videoURL: settings.arguments! as String),
+        settings: settings,
+      );
+    case CourseVideosView.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (_) => s1<VideoCubit>(),
+          child: CourseVideosView(settings.arguments! as Course),
+        ),
         settings: settings,
       );
     default:

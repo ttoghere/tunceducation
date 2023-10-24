@@ -4,7 +4,7 @@ import 'package:tunceducation/core/usecases/usecases.dart';
 import 'package:tunceducation/core/utils/utils.dart';
 import 'package:tunceducation/src/auth/domain/repositories/auth_repo.dart';
 
-class UpdateUser extends UsecaseWithParams<void, UpdateUserParams> {
+class UpdateUser extends FutureUsecaseWithParams<void, UpdateUserParams> {
   const UpdateUser(this._repo);
 
   final AuthRepo _repo;

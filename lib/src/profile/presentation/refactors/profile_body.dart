@@ -8,6 +8,9 @@ import 'package:tunceducation/core/common/app/providers/user_provider.dart';
 import 'package:tunceducation/core/core.dart';
 import 'package:tunceducation/core/extensions/context_extension.dart';
 import 'package:tunceducation/core/services/injection_container.dart';
+import 'package:tunceducation/src/course/features/exams/presentation/views/add_exam_views.dart';
+import 'package:tunceducation/src/course/features/materials/presentation/views/add_material_view.dart';
+import 'package:tunceducation/src/course/features/videos/presentation/view/add_video_view.dart';
 import 'package:tunceducation/src/course/presentation/cubit/course_cubit.dart';
 import 'package:tunceducation/src/course/presentation/widgets/add_course_sheet.dart';
 import 'package:tunceducation/src/profile/presentation/widgets/admin_button.dart';
@@ -21,7 +24,7 @@ class ProfileBody extends StatelessWidget {
       builder: (context, value, child) {
         final user = value.user;
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Row(
               children: [
@@ -98,6 +101,26 @@ class ProfileBody extends StatelessWidget {
                   );
                 },
               ),
+              AdminButton(
+                label: "Add Video",
+                icon: IconlyBold.video,
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AddVideoView.routeName);
+                },
+              ),
+              AdminButton(
+                label: "Add Material",
+                icon: IconlyBold.document,
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AddMaterialView.routeName);
+                },
+              ),
+              AdminButton(
+                  label: "Add Exams",
+                  icon: IconlyLight.document,
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(AddExamView.routeName);
+                  })
             ],
           ],
         );

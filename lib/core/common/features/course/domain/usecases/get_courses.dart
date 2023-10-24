@@ -3,7 +3,7 @@ import 'package:tunceducation/core/common/features/course/domain/repos/course_re
 import 'package:tunceducation/core/usecases/usecases.dart';
 import 'package:tunceducation/core/utils/utils.dart';
 
-class GetCourses extends UsecaseWithoutParams<List<Course>> {
+class GetCourses extends FutureUsecaseWithoutParams<List<Course>> {
   const GetCourses(this._repo);
 
   final CourseRepo _repo;

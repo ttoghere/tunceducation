@@ -1,12 +1,12 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tunceducation/core/common/app/providers/course_of_the_day_notifier.dart';
+import 'package:tunceducation/core/common/app/providers/notifications_notifier.dart';
 import 'package:tunceducation/core/common/app/providers/user_provider.dart';
 import 'package:tunceducation/core/core.dart';
 import 'package:tunceducation/core/services/injection_container.dart';
-import 'package:tunceducation/src/course/features/videos/presentation/cubit/video_cubit.dart';
 import 'package:tunceducation/src/dashboard/presentation/providers/dashboard_controller.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,12 +37,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => CourseOfTheDayNotifier(),
         ),
-        BlocProvider(
-          create: (_) => VideoCubit(
-            addVideo: s1(),
-            getVideos: s1(),
-          ),
-        ),
+        ChangeNotifierProvider(
+            create: (_) => NotificationsNotifier(s1<SharedPreferences>())),
       ],
       child: MaterialApp(
         title: 'TuncEducation',

@@ -6,6 +6,7 @@ import 'package:tunceducation/core/extensions/context_extension.dart';
 import 'package:tunceducation/core/extensions/int_extensions.dart';
 import 'package:tunceducation/core/res/res.dart';
 import 'package:tunceducation/src/course/domain/entities/course.dart';
+import 'package:tunceducation/src/course/features/videos/presentation/view/course_videos_view.dart';
 
 class CourseDetailsScreen extends StatelessWidget {
   const CourseDetailsScreen(this.course, {super.key});
@@ -67,7 +68,7 @@ class CourseDetailsScreen extends StatelessWidget {
                         subtitle: 'Watch our tutorial '
                             'videos for ${course.title}',
                         onTap: () => Navigator.of(context).pushNamed(
-                          '/unknown-route',
+                          CourseVideosView.routeName,
                           arguments: course,
                         ),
                       ),
@@ -79,7 +80,7 @@ class CourseDetailsScreen extends StatelessWidget {
                         title: '${course.numberOfExams} Exam(s)',
                         subtitle: 'Take our exams for ${course.title}',
                         onTap: () => Navigator.of(context).pushNamed(
-                          '/unknown-route',
+                          CourseVideosView.routeName,
                           arguments: course,
                         ),
                       ),
@@ -93,7 +94,7 @@ class CourseDetailsScreen extends StatelessWidget {
                             '${course.numberOfMaterials.estimate} materials '
                             'for ${course.title}',
                         onTap: () => Navigator.of(context).pushNamed(
-                          '/unknown-route',
+                          CourseVideosView.routeName,
                           arguments: course,
                         ),
                       ),

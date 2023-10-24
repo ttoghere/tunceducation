@@ -3,7 +3,7 @@ import 'package:tunceducation/core/utils/typedefs.dart';
 import 'package:tunceducation/src/course/features/videos/domain/entities/video.dart';
 import 'package:tunceducation/src/course/features/videos/domain/repos/video_repo.dart';
 
-class GetVideos extends UsecaseWithParams<List<Video>, String> {
+class GetVideos extends FutureUsecaseWithParams<List<Video>, String> {
   const GetVideos(this._repo);
 
   final VideoRepo _repo;

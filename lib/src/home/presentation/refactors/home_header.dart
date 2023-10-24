@@ -15,10 +15,10 @@ class HomeHeader extends StatelessWidget {
         children: [
           Text(
             'Hello\n${context.watch<UserProvider>().user!.fullName}',
-            style: const TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 36,
-            ),
+            style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 24,
+                color: Colors.red[900]!),
           ),
           Positioned(
             top: context.height >= 926
