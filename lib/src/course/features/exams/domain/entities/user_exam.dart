@@ -1,6 +1,6 @@
 // users >> userId >> courses >> courseId >> exams >> examId >> answer
-import 'package:tunceducation/src/course/features/exams/domain/entities/user_choice.dart';
 import 'package:equatable/equatable.dart';
+import 'package:tunceducation/src/course/features/exams/domain/entities/user_choice.dart';
 
 /// So the plan is, even when we want to display the user's exam history, we
 /// can fetch the actual exam by the [examId] and then display the questions.

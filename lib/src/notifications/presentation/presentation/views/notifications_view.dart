@@ -19,9 +19,17 @@ class NotificationsView extends StatefulWidget {
 
 class _NotificationsViewState extends State<NotificationsView> {
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // Bağımlılıklar değiştikçe yapılması gereken işlemler
     context.read<NotificationCubit>().getNotifications();
+  }
+
+  @override
+  void dispose() {
+    // Burada widget temizliği veya kaynak serbest bırakma işlemleri yapabilirsiniz
+    super.dispose();
   }
 
   @override

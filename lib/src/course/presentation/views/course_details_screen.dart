@@ -1,12 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:tunceducation/core/common/widgets/course_info_tile.dart';
 import 'package:tunceducation/core/common/widgets/expandable_text.dart';
 import 'package:tunceducation/core/common/widgets/gradient_background.dart';
 import 'package:tunceducation/core/extensions/context_extension.dart';
 import 'package:tunceducation/core/extensions/int_extensions.dart';
-import 'package:tunceducation/core/res/res.dart';
+import 'package:tunceducation/core/res/media_res.dart';
 import 'package:tunceducation/src/course/domain/entities/course.dart';
+import 'package:tunceducation/src/course/features/exams/presentation/views/course_exams_view.dart';
+import 'package:tunceducation/src/course/features/materials/presentation/views/course_materials_view.dart';
 import 'package:tunceducation/src/course/features/videos/presentation/view/course_videos_view.dart';
+import 'package:flutter/material.dart';
 
 class CourseDetailsScreen extends StatelessWidget {
   const CourseDetailsScreen(this.course, {super.key});
@@ -80,7 +82,7 @@ class CourseDetailsScreen extends StatelessWidget {
                         title: '${course.numberOfExams} Exam(s)',
                         subtitle: 'Take our exams for ${course.title}',
                         onTap: () => Navigator.of(context).pushNamed(
-                          CourseVideosView.routeName,
+                          CourseExamsView.routeName,
                           arguments: course,
                         ),
                       ),
@@ -94,7 +96,7 @@ class CourseDetailsScreen extends StatelessWidget {
                             '${course.numberOfMaterials.estimate} materials '
                             'for ${course.title}',
                         onTap: () => Navigator.of(context).pushNamed(
-                          CourseVideosView.routeName,
+                          CourseMaterialsView.routeName,
                           arguments: course,
                         ),
                       ),

@@ -19,7 +19,7 @@ void main() {
     usecase = SignIn(repo);
   });
 
-  LocalUser tUser = LocalUser.empty();
+  LocalUser tUser = const LocalUser.empty();
 
   test(
     'should return [LocalUser] from the [AuthRepo]',

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:tunceducation/core/utils/utils.dart';
-
+import 'package:tunceducation/core/utils/typedefs.dart';
 import 'package:tunceducation/src/chat/domain/entities/group.dart';
 
 class GroupModel extends Group {

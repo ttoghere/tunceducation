@@ -5,11 +5,15 @@ import 'package:tunceducation/core/common/app/providers/tab_navigation.dart';
 import 'package:tunceducation/core/common/views/persistent_view.dart';
 import 'package:tunceducation/core/services/injection_container.dart';
 import 'package:tunceducation/src/auth/presentation/blocs/auth/auth_bloc.dart';
+import 'package:tunceducation/src/chat/presentation/cubit/chat_cubit.dart';
+import 'package:tunceducation/src/chat/presentation/views/groups_view.dart';
 import 'package:tunceducation/src/course/features/videos/presentation/cubit/video_cubit.dart';
 import 'package:tunceducation/src/course/presentation/cubit/course_cubit.dart';
 import 'package:tunceducation/src/home/presentation/views/home_view.dart';
 import 'package:tunceducation/src/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:tunceducation/src/profile/presentation/view/profile_view.dart';
+import 'package:tunceducation/src/quick_access/presentation/providers/quick_access_tab_controller.dart';
+import 'package:tunceducation/src/quick_access/presentation/views/quick_access_view.dart';
 
 class DashboardController extends ChangeNotifier {
   List<int> _indexHistory = [0];
@@ -30,11 +34,28 @@ class DashboardController extends ChangeNotifier {
       child: const PersistentView(),
     ),
     ChangeNotifierProvider(
-      create: (_) => TabNavigator(TabItem(child: const Placeholder())),
+      create: (_) => TabNavigator(
+        TabItem(
+          child: BlocProvider(
+            create: (context) => s1<CourseCubit>(),
+            child: ChangeNotifierProvider(
+              create: (_) => QuickAccessTabController(),
+              child: const QuickAccessView(),
+            ),
+          ),
+        ),
+      ),
       child: const PersistentView(),
     ),
     ChangeNotifierProvider(
-      create: (_) => TabNavigator(TabItem(child: const Placeholder())),
+      create: (_) => TabNavigator(
+        TabItem(
+          child: BlocProvider(
+            create: (_) => s1<ChatCubit>(),
+            child: const GroupsView(),
+          ),
+        ),
+      ),
       child: const PersistentView(),
     ),
     ChangeNotifierProvider(

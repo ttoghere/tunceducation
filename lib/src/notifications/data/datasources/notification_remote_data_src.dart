@@ -87,7 +87,8 @@ class NotificationRemoteDataSrcImpl implements NotificationRemoteDataSrc {
             (snapshot) => snapshot.docs
                 .map((doc) => NotificationModel.fromMap(doc.data()))
                 .toList(),
-          );
+          )
+          .asBroadcastStream(); //
       return notificationsStream.handleError((dynamic error) {
         if (error is FirebaseException) {
           throw ServerException(

@@ -7,7 +7,10 @@ import 'package:tunceducation/core/common/app/providers/notifications_notifier.d
 import 'package:tunceducation/core/common/app/providers/user_provider.dart';
 import 'package:tunceducation/core/core.dart';
 import 'package:tunceducation/core/services/injection_container.dart';
+import 'package:tunceducation/src/course/features/exams/domain/entities/exam.dart';
+import 'package:tunceducation/src/course/features/exams/presentation/app/providers/exam_controller.dart';
 import 'package:tunceducation/src/dashboard/presentation/providers/dashboard_controller.dart';
+import 'package:tunceducation/src/quick_access/presentation/providers/quick_access_tab_controller.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -38,7 +41,18 @@ class MyApp extends StatelessWidget {
           create: (_) => CourseOfTheDayNotifier(),
         ),
         ChangeNotifierProvider(
-            create: (_) => NotificationsNotifier(s1<SharedPreferences>())),
+          create: (_) => NotificationsNotifier(
+            s1<SharedPreferences>(),
+          ),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ExamController(
+            exam: s1<Exam>(),
+          ),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => QuickAccessTabController(),
+        ),
       ],
       child: MaterialApp(
         title: 'TuncEducation',

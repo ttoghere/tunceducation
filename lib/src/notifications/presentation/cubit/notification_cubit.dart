@@ -68,27 +68,63 @@ class NotificationCubit extends Cubit<NotificationState> {
     );
   }
 
+  // Future<void> sendNotification(Notification notification) async {
+  //   emit(const SendingNotification());
+  //   final result = await _sendNotification(notification);
+  //   result.fold(
+  //     (failure) => emit(NotificationError(failure.errorMessage)),
+  //     (_) => emit(const NotificationCleared()),
+  //   );
+  // }
+
+  // void getNotifications() {
+  //   emit(const GettingNotifications());
+  //   StreamSubscription<Either<Failure, List<Notification>>>? subscription;
+
+  //   subscription = _getNotifications().listen(
+  //     /*onData:*/
+  //     (result) {
+  //       result.fold(
+  //         (failure) {
+  //           emit(NotificationError(failure.errorMessage));
+  //           subscription?.cancel();
+  //         },
+  //         (notifications) => emit(NotificationsLoaded(notifications)),
+  //       );
+  //     },
+  //     onError: (dynamic error) {
+  //       emit(NotificationError(error.toString()));
+  //       subscription?.cancel();
+  //     },
+  //     onDone: () {
+  //       subscription?.cancel();
+  //     },
+  //   );
+  // }
+
   void getNotifications() {
     emit(const GettingNotifications());
     StreamSubscription<Either<Failure, List<Notification>>>? subscription;
 
     subscription = _getNotifications().listen(
-      /*onData:*/
       (result) {
         result.fold(
           (failure) {
             emit(NotificationError(failure.errorMessage));
-            subscription?.cancel();
+            // Hata durumunda subscription'ı iptal etmeyin.
           },
-          (notifications) => emit(NotificationsLoaded(notifications)),
+          (notifications) {
+            emit(NotificationsLoaded(notifications));
+            // Başarılı durumda subscription'ı iptal etmeyin.
+          },
         );
       },
       onError: (dynamic error) {
         emit(NotificationError(error.toString()));
-        subscription?.cancel();
+        // Hata durumunda subscription'ı iptal etmeyin.
       },
       onDone: () {
-        subscription?.cancel();
+        // Yayın tamamlandığında subscription'ı iptal etmeyin.
       },
     );
   }

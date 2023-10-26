@@ -2,15 +2,13 @@ import 'dart:io';
 
 import 'package:tunceducation/core/common/widgets/titled_input_field.dart';
 import 'package:tunceducation/core/enums/notification_enum.dart';
-import 'package:tunceducation/core/services/injection_container.dart';
 import 'package:tunceducation/core/utils/constants.dart';
 import 'package:tunceducation/core/utils/core_utils.dart';
 import 'package:tunceducation/src/course/data/models/course_model.dart';
 import 'package:tunceducation/src/course/presentation/cubit/course_cubit.dart';
+import 'package:tunceducation/src/notifications/presentation/presentation/widgets/notification_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tunceducation/src/notifications/data/models/notification_model.dart';
-import 'package:tunceducation/src/notifications/presentation/cubit/notification_cubit.dart';
 
 class AddCourseSheet extends StatefulWidget {
   const AddCourseSheet({super.key});
@@ -53,14 +51,12 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<NotificationCubit, NotificationState>(
-      listener: (context, state) {
-        if (state is NotificationSent) {
-          if (loading) {
-            Navigator.of(context).pop();
-          }
+    return NotificationWrapper(
+      onNotificationSent: () {
+        if (loading) {
           Navigator.of(context).pop();
         }
+        Navigator.of(context).pop();
       },
       child: BlocListener<CourseCubit, CourseState>(
         listener: (_, state) {
@@ -77,12 +73,11 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
             CoreUtils.showSnackBar(context, 'Course added successfully');
             CoreUtils.showLoadingDialog(context);
             loading = true;
-            s1<NotificationCubit>().sendNotification(
-              NotificationModel.empty().copyWith(
-                title: "New Course: ${titleController.text.trim()}",
-                body: "A new course has been added",
-                category: NotificationCategory.COURSE,
-              ),
+            CoreUtils.sendNotification(
+              context,
+              title: 'New Course(${titleController.text.trim()})',
+              body: 'A new course has been added',
+              category: NotificationCategory.COURSE,
             );
           }
         },

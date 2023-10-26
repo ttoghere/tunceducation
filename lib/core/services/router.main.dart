@@ -110,6 +110,41 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         ),
         settings: settings,
       );
+    case CourseMaterialsView.routeName:
+      return _pageBuilder(
+          (_) => BlocProvider(
+                create: (_) => s1<MaterialCubit>(),
+                child: CourseMaterialsView(settings.arguments! as Course),
+              ),
+          settings: settings);
+    case CourseExamsView.routeName:
+      return _pageBuilder(
+          (p0) => BlocProvider(
+                create: (_) => s1<ExamCubit>(),
+                child: CourseExamsView(settings.arguments! as Course),
+              ),
+          settings: settings);
+    case ExamDetailsView.routeName:
+      return _pageBuilder((p0) => ExamDetailsView(settings.arguments! as Exam),
+          settings: settings);
+    case ExamView.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (context) => s1<ExamCubit>(),
+          child: ChangeNotifierProvider(
+            create: (context) => ExamController(
+              exam: settings.arguments! as Exam,
+            ),
+            child: const ExamView(),
+          ),
+        ),
+        settings: settings,
+      );
+    case ExamHistoryDetailsScreen.routeName:
+      return _pageBuilder(
+        (p0) => ExamHistoryDetailsScreen(settings.arguments! as UserExam),
+        settings: settings,
+      );
     default:
       return _pageBuilder(
         (_) => const PageUnderConstruction(),

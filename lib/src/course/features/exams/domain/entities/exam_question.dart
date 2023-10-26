@@ -1,5 +1,5 @@
-import 'package:tunceducation/src/course/features/exams/domain/entities/question_choice.dart';
 import 'package:equatable/equatable.dart';
+import 'package:tunceducation/src/course/features/exams/domain/entities/question_choice.dart';
 
 class ExamQuestion extends Equatable {
   const ExamQuestion({

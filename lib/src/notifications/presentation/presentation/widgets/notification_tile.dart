@@ -1,8 +1,6 @@
 import 'package:tunceducation/core/common/widgets/time_text.dart';
 import 'package:tunceducation/src/notifications/domain/entities/notification.dart';
-import 'package:tunceducation/src/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:flutter/material.dart' hide Notification;
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NotificationTile extends StatelessWidget {
   const NotificationTile(this.notification, {super.key});
@@ -11,9 +9,6 @@ class NotificationTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!notification.seen) {
-      context.read<NotificationCubit>().markAsRead(notification.id);
-    }
     return Dismissible(
       key: Key(notification.id),
       direction: DismissDirection.endToStart,
@@ -24,9 +19,12 @@ class NotificationTile extends StatelessWidget {
         child: const Icon(Icons.delete, color: Colors.white),
       ),
       onDismissed: (_) {
-        context.read<NotificationCubit>().clear(notification.id);
+        // context.read<NotificationCubit>().clear(notification.id);
       },
       child: ListTile(
+        onTap: () {
+          // context.read<NotificationCubit>().markAsRead(notification.id);
+        },
         leading: CircleAvatar(
           radius: 24,
           backgroundImage: AssetImage(notification.category.image),

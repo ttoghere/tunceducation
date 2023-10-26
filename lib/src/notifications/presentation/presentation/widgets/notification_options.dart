@@ -1,7 +1,6 @@
 import 'package:tunceducation/core/common/app/providers/notifications_notifier.dart';
 import 'package:tunceducation/core/common/widgets/popup_item.dart';
 import 'package:tunceducation/core/res/res.dart';
-import 'package:tunceducation/src/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,16 +28,6 @@ class NotificationOptions extends StatelessWidget {
                   notifier.muteNotifications
                       ? Icons.notifications_off_outlined
                       : Icons.notifications_outlined,
-                  color: Colours.neutralTextColour,
-                ),
-              ),
-            ),
-            PopupMenuItem<void>(
-              onTap: context.read<NotificationCubit>().clearAll,
-              child: const PopupItem(
-                title: 'Clear All',
-                icon: Icon(
-                  Icons.check_circle_outline,
                   color: Colours.neutralTextColour,
                 ),
               ),

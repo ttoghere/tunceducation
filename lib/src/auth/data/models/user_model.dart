@@ -38,6 +38,7 @@ class LocalUserModel extends LocalUser {
           following: (map["following"] as List<dynamic>?)?.cast<String>() ??
               [], // nullable ve hata durumu ele alınmış
         );
+  @override
   DataMap toMap() {
     return <String, dynamic>{
       'uid': uid,
@@ -53,6 +54,7 @@ class LocalUserModel extends LocalUser {
     };
   }
 
+  @override
   LocalUser copyWith({
     String? uid,
     String? email,

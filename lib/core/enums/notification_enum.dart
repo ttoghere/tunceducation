@@ -13,4 +13,11 @@ enum NotificationCategory {
 
   final String value;
   final String image;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'value': value,
+      'image': image,
+    };
+  }
 }

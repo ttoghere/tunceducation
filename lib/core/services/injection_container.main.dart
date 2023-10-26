@@ -10,6 +10,31 @@ Future<void> init() async {
   await _initMaterial();
   await _initExam();
   await _initNotifications();
+  await _initChat();
+}
+
+Future<void> _initChat() async {
+  s1
+    ..registerFactory(
+      () => ChatCubit(
+        getGroups: s1(),
+        getMessages: s1(),
+        getUserById: s1(),
+        joinGroup: s1(),
+        leaveGroup: s1(),
+        sendMessage: s1(),
+      ),
+    )
+    ..registerLazySingleton(() => GetGroups(s1()))
+    ..registerLazySingleton(() => GetMessages(s1()))
+    ..registerLazySingleton(() => GetUserById(s1()))
+    ..registerLazySingleton(() => JoinGroup(s1()))
+    ..registerLazySingleton(() => LeaveGroup(s1()))
+    ..registerLazySingleton(() => SendMessage(s1()))
+    ..registerLazySingleton<ChatRepo>(() => ChatRepoImpl(s1()))
+    ..registerLazySingleton<ChatRemoteDataSource>(
+      () => ChatRemoteDataSourceImpl(firestore: s1(), auth: s1()),
+    );
 }
 
 Future<void> _initNotifications() async {
@@ -76,6 +101,12 @@ Future<void> _initMaterial() async {
         firestore: s1(),
         auth: s1(),
         storage: s1(),
+      ),
+    )
+    ..registerFactory(
+      () => ResourceController(
+        storage: s1(),
+        prefs: s1(),
       ),
     );
 }
