@@ -73,13 +73,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: TextStyle(
                         fontFamily: Fonts.aeonik,
                         fontWeight: FontWeight.w700,
+                        color: Colors.white,
                         fontSize: 32,
                       ),
                     ),
                     const SizedBox(height: 10),
                     const Text(
                       'Sign up for an account',
-                      style: TextStyle(fontSize: 14),
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
                     ),
                     const SizedBox(height: 10),
                     Align(
@@ -91,7 +95,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             SignInScreen.routeName,
                           );
                         },
-                        child: const Text('Already have an account?'),
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.red[900],
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: const Text(
+                            'Already have an account?',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 10),

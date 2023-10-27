@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tunceducation/core/res/res.dart';
 
 class AdminButton extends StatelessWidget {
   const AdminButton({
@@ -17,7 +16,7 @@ class AdminButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colours.primaryColour,
+        backgroundColor: Colors.red[900],
         foregroundColor: Colors.white,
       ),
       onPressed: onPressed,

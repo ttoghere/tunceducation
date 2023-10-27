@@ -31,6 +31,7 @@ class ProfileView extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red[900],
         onPressed: () {
           s1<NotificationCubit>().sendNotification(
             NotificationModel.empty().copyWith(

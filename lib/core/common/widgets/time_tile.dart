@@ -17,7 +17,7 @@ class TimeTile extends StatelessWidget {
         vertical: 4,
       ),
       decoration: BoxDecoration(
-        color: Colours.primaryColour,
+        color: Colors.red,
         borderRadius: BorderRadius.circular(90),
       ),
       child: TimeText(

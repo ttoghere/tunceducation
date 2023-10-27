@@ -31,6 +31,7 @@ class ChangeableField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
       controller: controller,
       validator: overrideValidator
           ? validator
@@ -70,6 +71,7 @@ class ChangeableField extends StatelessWidget {
             const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w400,
+              color: Colors.white,
             ),
       ),
     );

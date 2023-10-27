@@ -36,7 +36,6 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (_, state) {
           if (state is AuthError) {
@@ -62,6 +61,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       style: TextStyle(
                         fontFamily: Fonts.aeonik,
                         fontWeight: FontWeight.w700,
+                        color: Colors.white,
                         fontSize: 32,
                       ),
                     ),
@@ -69,9 +69,19 @@ class _SignInScreenState extends State<SignInScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          'Sign in to your account',
-                          style: TextStyle(fontSize: 14),
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.red[900],
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: const Text(
+                            'Sign in to your account',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                         Baseline(
                           baseline: 100,
@@ -83,7 +93,19 @@ class _SignInScreenState extends State<SignInScreen> {
                                 SignUpScreen.routeName,
                               );
                             },
-                            child: const Text('Register account?'),
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: Colors.red[900],
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: const Text(
+                                'Register account?',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -101,7 +123,19 @@ class _SignInScreenState extends State<SignInScreen> {
                         onPressed: () {
                           Navigator.pushNamed(context, '/forgot-password');
                         },
-                        child: const Text('Forgot password?'),
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.red[900],
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: const Text(
+                            'Forgot password?',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 30),

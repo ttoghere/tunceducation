@@ -1,4 +1,3 @@
-import 'package:tunceducation/core/res/colors.dart';
 import 'package:flutter/material.dart';
 
 class RoundedButton extends StatelessWidget {
@@ -17,14 +16,21 @@ class RoundedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: buttonColour ?? Colours.primaryColour,
-        foregroundColor: labelColour ?? Colors.white,
-        minimumSize: const Size(double.maxFinite, 50),
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.red[900],
+        borderRadius: BorderRadius.circular(30),
       ),
-      onPressed: onPressed,
-      child: Text(label),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: buttonColour ?? Colors.red,
+          foregroundColor: labelColour ?? Colors.white,
+          minimumSize: const Size(double.maxFinite, 50),
+        ),
+        onPressed: onPressed,
+        child: Text(label),
+      ),
     );
   }
 }

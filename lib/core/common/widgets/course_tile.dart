@@ -31,6 +31,7 @@ class CourseTile extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 12,
+                color: Colors.white,
                 fontWeight: FontWeight.w600,
               ),
             ),

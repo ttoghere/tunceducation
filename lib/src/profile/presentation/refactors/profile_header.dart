@@ -27,7 +27,10 @@ class ProfileHeader extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               user?.fullName ?? "No User",
-              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+              style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 24,
+                  color: Colors.white),
               textAlign: TextAlign.center,
             ),
             if (user?.bio != null && user!.bio!.isNotEmpty) ...[

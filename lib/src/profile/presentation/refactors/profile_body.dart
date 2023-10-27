@@ -30,10 +30,11 @@ class ProfileBody extends StatelessWidget {
               children: [
                 Expanded(
                   child: UserInfoCard(
-                      infoThemeColor: Colours.neutralTextColour,
+                      infoThemeColor: Colors.white,
                       infoIcon: const Icon(
                         Icons.pages,
                         size: 24,
+                        color: Colors.black,
                       ),
                       infoTitle: "Courses",
                       infoValue: user!.enrolledCourseIds.length.toString()),
@@ -43,7 +44,7 @@ class ProfileBody extends StatelessWidget {
                 ),
                 Expanded(
                   child: UserInfoCard(
-                      infoThemeColor: Colours.languageTileColour,
+                      infoThemeColor: Colors.white,
                       infoIcon: Image.asset(
                         MediaRes.scoreboard,
                         height: 24,
@@ -61,7 +62,7 @@ class ProfileBody extends StatelessWidget {
               children: [
                 Expanded(
                   child: UserInfoCard(
-                      infoThemeColor: Colours.chemistryTileColour,
+                      infoThemeColor: Colors.white,
                       infoIcon: const Icon(
                         Icons.person,
                         size: 24,
@@ -74,8 +75,11 @@ class ProfileBody extends StatelessWidget {
                 ),
                 Expanded(
                   child: UserInfoCard(
-                      infoThemeColor: Colours.biologyTileColour,
-                      infoIcon: const Icon(Icons.person_outline_outlined),
+                      infoThemeColor: Colors.white,
+                      infoIcon: Icon(
+                        Icons.person_outline_outlined,
+                        color: Colors.red[900]!,
+                      ),
                       infoTitle: "Followers",
                       infoValue: user.followers.length.toString()),
                 ),
@@ -177,12 +181,17 @@ class UserInfoCard extends StatelessWidget {
               children: [
                 Text(
                   infoTitle,
-                  style: const TextStyle(fontSize: 12),
+                  style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.red[900],
+                      fontWeight: FontWeight.bold),
                 ),
                 Text(
                   infoValue,
                   style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w600),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white),
                 ),
               ],
             )

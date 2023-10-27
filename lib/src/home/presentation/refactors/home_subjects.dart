@@ -34,7 +34,7 @@ class HomeSubjects extends StatelessWidget {
         const SizedBox(height: 20),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: courses
               .take(4)
               .map(

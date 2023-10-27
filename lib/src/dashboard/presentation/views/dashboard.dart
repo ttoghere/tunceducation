@@ -45,7 +45,7 @@ class _DashboardState extends State<Dashboard> {
               bottomNavigationBar: BottomNavigationBar(
                 currentIndex: controller.currentIndex,
                 showSelectedLabels: false,
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.black,
                 elevation: 8,
                 onTap: controller.changeIndex,
                 items: [
@@ -55,8 +55,8 @@ class _DashboardState extends State<Dashboard> {
                           ? IconlyBold.home
                           : IconlyLight.home,
                       color: controller.currentIndex == 0
-                          ? Colours.primaryColour
-                          : Colors.grey,
+                          ? Colors.red[900]
+                          : Colors.red[200],
                     ),
                     label: 'Home',
                     backgroundColor: Colors.white,
@@ -67,8 +67,8 @@ class _DashboardState extends State<Dashboard> {
                           ? IconlyBold.document
                           : IconlyLight.document,
                       color: controller.currentIndex == 1
-                          ? Colours.primaryColour
-                          : Colors.grey,
+                          ? Colors.red[900]
+                          : Colors.red[200],
                     ),
                     label: 'Materials',
                     backgroundColor: Colors.white,
@@ -79,8 +79,8 @@ class _DashboardState extends State<Dashboard> {
                           ? IconlyBold.chat
                           : IconlyLight.chat,
                       color: controller.currentIndex == 2
-                          ? Colours.primaryColour
-                          : Colors.grey,
+                          ? Colors.red[900]
+                          : Colors.red[200],
                     ),
                     label: 'Chat',
                     backgroundColor: Colors.white,
@@ -91,8 +91,8 @@ class _DashboardState extends State<Dashboard> {
                           ? IconlyBold.profile
                           : IconlyLight.profile,
                       color: controller.currentIndex == 3
-                          ? Colours.primaryColour
-                          : Colors.grey,
+                          ? Colors.red[900]
+                          : Colors.red[200],
                     ),
                     label: 'User',
                     backgroundColor: Colors.white,

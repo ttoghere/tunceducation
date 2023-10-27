@@ -10,7 +10,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('My Classes'),
+      title: const Text(
+        'My Classes',
+        style: TextStyle(color: Colors.white),
+      ),
+      iconTheme: const IconThemeData(color: Colors.white),
       centerTitle: false,
       actions: [
         IconButton(

@@ -83,6 +83,7 @@ class VideoTile extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 16,
+                      color: Colors.white,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -94,7 +95,7 @@ class VideoTile extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 12,
-                      color: Colours.neutralTextColour,
+                      color: Colors.white,
                     ),
                   ),
                 ),

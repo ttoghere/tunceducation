@@ -16,7 +16,7 @@ class NotFoundText extends StatelessWidget {
           textAlign: TextAlign.center,
           style: context.theme.textTheme.headlineMedium?.copyWith(
             fontWeight: FontWeight.w600,
-            color: Colors.grey.withOpacity(.5),
+            color: Colors.white,
           ),
         ),
       ),

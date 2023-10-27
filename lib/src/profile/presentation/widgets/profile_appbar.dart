@@ -16,9 +16,11 @@ class ProfileAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      iconTheme: const IconThemeData(color: Colors.white),
       title: const Text(
         "Account",
-        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+        style: TextStyle(
+            fontWeight: FontWeight.w600, fontSize: 24, color: Colors.white),
       ),
       actions: [
         PopupMenuButton(
