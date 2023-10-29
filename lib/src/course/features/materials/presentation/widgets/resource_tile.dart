@@ -1,6 +1,5 @@
 import 'package:tunceducation/core/res/res.dart';
 import 'package:tunceducation/src/course/features/materials/presentation/app/providers/resource_controller.dart';
-import 'package:file_icon/file_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +35,6 @@ class ResourceTile extends StatelessWidget {
           tilePadding: EdgeInsets.zero,
           expandedAlignment: Alignment.centerLeft,
           childrenPadding: const EdgeInsets.symmetric(horizontal: 10),
-          leading: FileIcon('.${resource.fileExtension}', size: 40),
           title: Text(
             resource.title!,
             style: const TextStyle(

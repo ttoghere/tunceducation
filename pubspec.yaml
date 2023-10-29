@@ -1,12 +1,12 @@
 name: tunceducation
 description: A new Flutter project.
 
-publish_to: 'none'
+publish_to: "none"
 
-version: 1.0.0+1
+version: 1.1.0+1
 
 environment:
-  sdk: '>=3.0.6 <4.0.0'
+  sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
   audioplayers: ^5.2.0
@@ -18,7 +18,7 @@ dependencies:
   dartz: ^0.10.1
   equatable: ^2.0.5
   fake_cloud_firestore: ^2.4.1+1
-  file_icon: ^1.0.0
+  # file_icon: ^1.0.0
   file_picker: ^5.3.3
   firebase_auth: ^4.10.1
   firebase_auth_mocks: ^0.13.0

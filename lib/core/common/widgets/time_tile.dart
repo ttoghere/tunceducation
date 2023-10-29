@@ -1,7 +1,5 @@
 import 'package:tunceducation/core/common/widgets/time_text.dart';
-
 import 'package:flutter/material.dart';
-import 'package:tunceducation/core/res/res.dart';
 
 class TimeTile extends StatelessWidget {
   const TimeTile(this.time, {super.key, this.prefixText});
