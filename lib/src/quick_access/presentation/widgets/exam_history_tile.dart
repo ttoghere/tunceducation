@@ -1,4 +1,3 @@
-import 'package:tunceducation/core/res/media_res.dart';
 import 'package:tunceducation/src/course/features/exams/domain/entities/user_exam.dart';
 import 'package:tunceducation/src/quick_access/presentation/views/exam_history_details_screen.dart';
 import 'package:flutter/material.dart';

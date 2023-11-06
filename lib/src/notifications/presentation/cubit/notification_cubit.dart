@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -32,6 +34,7 @@ class NotificationCubit extends Cubit<NotificationState> {
   final GetNotifications _getNotifications;
   final MarkAsRead _markAsRead;
   final SendNotification _sendNotification;
+  StreamSubscription<Either<Failure, List<Notification>>>? subscription;
 
   Future<void> clear(String notificationId) async {
     emit(const ClearingNotifications());
@@ -55,7 +58,10 @@ class NotificationCubit extends Cubit<NotificationState> {
     final result = await _markAsRead(notificationId);
     result.fold(
       (failure) => emit(NotificationError(failure.errorMessage)),
-      (_) => emit(const NotificationInitial()),
+      (_) {
+        getNotifications();
+        emit(const NotificationInitial());
+      },
     );
   }
 
@@ -102,30 +108,63 @@ class NotificationCubit extends Cubit<NotificationState> {
   //   );
   // }
 
-  void getNotifications() {
+  // void getNotifications() {
+  //   emit(const GettingNotifications());
+
+  //   subscription = _getNotifications().listen(
+  //     (result) {
+  //       result.fold(
+  //         (failure) {
+  //           emit(NotificationError(failure.errorMessage));
+  //           // Hata durumunda subscription'ı iptal etmeyin.
+  //         },
+  //         (notifications) {
+  //           emit(NotificationsLoaded(notifications));
+  //           // Başarılı durumda subscription'ı iptal etmeyin.
+  //         },
+  //       );
+  //     },
+  //     onError: (dynamic error) {
+  //       emit(NotificationError(error.toString()));
+  //       // Hata durumunda subscription'ı iptal etmeyin.
+  //     },
+  //     onDone: () {
+  //       // Yayın tamamlandığında subscription'ı iptal etmeyin.
+  //     },
+  //   );
+  // }
+
+  Future<void> getNotifications() async {
     emit(const GettingNotifications());
-    StreamSubscription<Either<Failure, List<Notification>>>? subscription;
 
     subscription = _getNotifications().listen(
       (result) {
         result.fold(
           (failure) {
-            emit(NotificationError(failure.errorMessage));
-            // Hata durumunda subscription'ı iptal etmeyin.
+            final errorDetails =
+                "Hata: ${failure.runtimeType.toString()} - ${failure.errorMessage}";
+            emit(NotificationError(errorDetails));
+            subscription?.cancel(); // Aboneliği iptal et
           },
           (notifications) {
             emit(NotificationsLoaded(notifications));
-            // Başarılı durumda subscription'ı iptal etmeyin.
           },
         );
       },
       onError: (dynamic error) {
-        emit(NotificationError(error.toString()));
-        // Hata durumunda subscription'ı iptal etmeyin.
+        final errorDetails = "Hata: ${error.toString()}";
+        emit(NotificationError(errorDetails));
+        subscription?.cancel(); // Hata durumunda da aboneliği iptal et
       },
       onDone: () {
-        // Yayın tamamlandığında subscription'ı iptal etmeyin.
+        subscription?.cancel();
       },
     );
+  }
+
+  @override
+  Future<void> close() {
+    subscription?.cancel();
+    return super.close();
   }
 }

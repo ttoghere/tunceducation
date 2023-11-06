@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tunceducation/core/errors/exceptions.dart';
 import 'package:tunceducation/core/utils/datasource_utils.dart';
 import 'package:tunceducation/src/notifications/data/models/notification_model.dart';
 import 'package:tunceducation/src/notifications/domain/entities/notification.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart' as build;
+import 'package:tunceducation/src/notifications/presentation/cubit/notification_cubit.dart';
 
 abstract class NotificationRemoteDataSrc {
   const NotificationRemoteDataSrc();
@@ -20,7 +23,7 @@ abstract class NotificationRemoteDataSrc {
 }
 
 class NotificationRemoteDataSrcImpl implements NotificationRemoteDataSrc {
-  const NotificationRemoteDataSrcImpl({
+  NotificationRemoteDataSrcImpl({
     required FirebaseFirestore firestore,
     required FirebaseAuth auth,
   })  : _firestore = firestore,
@@ -28,6 +31,7 @@ class NotificationRemoteDataSrcImpl implements NotificationRemoteDataSrc {
 
   final FirebaseFirestore _firestore;
   final FirebaseAuth _auth;
+  late build.BuildContext context;
 
   @override
   Future<void> clear(String notificationId) async {
@@ -39,6 +43,7 @@ class NotificationRemoteDataSrcImpl implements NotificationRemoteDataSrc {
           .collection('notifications')
           .doc(notificationId)
           .delete();
+      context.read<NotificationCubit>().getNotifications(); // Bildirimleri al
     } on FirebaseException catch (e) {
       throw ServerException(
         message: e.message ?? 'Unknown error occurred',
@@ -73,8 +78,59 @@ class NotificationRemoteDataSrcImpl implements NotificationRemoteDataSrc {
     }
   }
 
+  // @override
+  // Stream<List<NotificationModel>> getNotifications() {
+  //   try {
+  //     DataSourceUtils.authorizeUser(_auth);
+  //     final notificationsStream = _firestore
+  //         .collection('users')
+  //         .doc(_auth.currentUser!.uid)
+  //         .collection('notifications')
+  //         .orderBy('sentAt', descending: true)
+  //         .snapshots()
+  //         .map(
+  //           (snapshot) => snapshot.docs
+  //               .map((doc) => NotificationModel.fromMap(doc.data()))
+  //               .toList(),
+  //         )
+  //         .asBroadcastStream(); //
+  //     return notificationsStream.handleError((dynamic error) {
+  //       if (error is FirebaseException) {
+  //         throw ServerException(
+  //           message: error.message ?? 'Unknown error occurred',
+  //           statusCode: error.code,
+  //         );
+  //       }
+  //       throw ServerException(message: error.toString(), statusCode: '505');
+  //     });
+  //   } on FirebaseException catch (e) {
+  //     return Stream.error(
+  //       ServerException(
+  //         message: e.message ?? 'Unknown error occurred',
+  //         statusCode: e.code,
+  //       ),
+  //     );
+  //   } on ServerException catch (e) {
+  //     return Stream.error(e);
+  //   } catch (e) {
+  //     return Stream.error(
+  //       ServerException(message: e.toString(), statusCode: '505'),
+  //     );
+  //   }
+  // }
+
   @override
   Stream<List<NotificationModel>> getNotifications() {
+    handleError(dynamic error) {
+      if (error is FirebaseException) {
+        return ServerException(
+          message: error.message ?? 'Unknown error occurred',
+          statusCode: error.code,
+        );
+      }
+      return ServerException(message: error.toString(), statusCode: '505');
+    }
+
     try {
       DataSourceUtils.authorizeUser(_auth);
       final notificationsStream = _firestore
@@ -89,15 +145,8 @@ class NotificationRemoteDataSrcImpl implements NotificationRemoteDataSrc {
                 .toList(),
           )
           .asBroadcastStream(); //
-      return notificationsStream.handleError((dynamic error) {
-        if (error is FirebaseException) {
-          throw ServerException(
-            message: error.message ?? 'Unknown error occurred',
-            statusCode: error.code,
-          );
-        }
-        throw ServerException(message: error.toString(), statusCode: '505');
-      });
+
+      return notificationsStream.handleError(handleError);
     } on FirebaseException catch (e) {
       return Stream.error(
         ServerException(

@@ -34,6 +34,7 @@ class NotificationModel extends Notification {
           sentAt: DateTime.now(),
         );
 
+  @override
   NotificationModel copyWith({
     String? id,
     String? title,
@@ -52,6 +53,7 @@ class NotificationModel extends Notification {
     );
   }
 
+  @override
   DataMap toMap() => {
         'id': id,
         'title': title,

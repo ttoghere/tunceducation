@@ -7,6 +7,7 @@ import 'package:tunceducation/src/auth/presentation/blocs/auth/auth_bloc.dart';
 import 'package:tunceducation/src/auth/presentation/views/sign_in_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tunceducation/src/profile/presentation/view/edit_profile_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileAppBar extends StatelessWidget implements PreferredSize {
   const ProfileAppBar({
@@ -58,6 +59,13 @@ class ProfileAppBar extends StatelessWidget implements PreferredSize {
               ),
             ),
             PopupMenuItem<void>(
+              child: const PopUpItem(
+                icon: Icons.info,
+                title: "Privacy",
+              ),
+              onTap: () => _launchURL(),
+            ),
+            PopupMenuItem<void>(
               padding: EdgeInsets.zero,
               height: 1,
               child: Divider(
@@ -89,6 +97,16 @@ class ProfileAppBar extends StatelessWidget implements PreferredSize {
         )
       ],
     );
+  }
+
+  _launchURL() async {
+    const url =
+        'http://tunckankilic.site/tunceducation-app-custom-teacher-online-app-privacy/';
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'URL açılamıyor: $url';
+    }
   }
 
   @override

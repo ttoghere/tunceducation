@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:tunceducation/src/course/features/materials/domain/entities/resource.dart';
 import 'package:tunceducation/src/course/features/materials/domain/usecases/add_material.dart';
 import 'package:tunceducation/src/course/features/materials/domain/usecases/get_materials.dart';
-import 'package:equatable/equatable.dart';
 import 'package:tunceducation/src/course/features/materials/presentation/app/cubit/material_cubit.dart';
 
 class MaterialCubit extends Cubit<MaterialState> {
