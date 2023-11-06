@@ -1,33 +1,39 @@
+import 'package:provider/provider.dart';
+import 'package:tunceducation/core/common/views/page_under_construction.dart';
+import 'package:tunceducation/core/extensions/context_extension.dart';
+import 'package:tunceducation/core/services/injection_container.dart';
+import 'package:tunceducation/src/auth/data/models/user_model.dart';
+import 'package:tunceducation/src/auth/presentation/blocs/auth/auth_bloc.dart';
+import 'package:tunceducation/src/auth/presentation/views/sign_in_screen.dart';
+import 'package:tunceducation/src/auth/presentation/views/sign_up_screen.dart';
+import 'package:tunceducation/src/course/domain/entities/course.dart';
+import 'package:tunceducation/src/course/features/exams/domain/entities/exam.dart';
+import 'package:tunceducation/src/course/features/exams/domain/entities/user_exam.dart';
+import 'package:tunceducation/src/course/features/exams/presentation/app/cubit/exam_cubit.dart';
+import 'package:tunceducation/src/course/features/exams/presentation/app/providers/exam_controller.dart';
+import 'package:tunceducation/src/course/features/exams/presentation/views/add_exam_view.dart';
+import 'package:tunceducation/src/course/features/exams/presentation/views/course_exams_view.dart';
+import 'package:tunceducation/src/course/features/exams/presentation/views/exam_details_view.dart';
+import 'package:tunceducation/src/course/features/exams/presentation/views/exam_view.dart';
+import 'package:tunceducation/src/course/features/materials/presentation/app/cubit/material_cubit.dart';
+import 'package:tunceducation/src/course/features/materials/presentation/views/add_materials_view.dart';
+import 'package:tunceducation/src/course/features/materials/presentation/views/course_materials_view.dart';
+import 'package:tunceducation/src/course/features/videos/presentation/cubit/video_cubit.dart';
+import 'package:tunceducation/src/course/features/videos/presentation/view/add_video_view.dart';
+import 'package:tunceducation/src/course/features/videos/presentation/view/course_videos_view.dart';
+import 'package:tunceducation/src/course/features/videos/presentation/view/video_player_view.dart';
+import 'package:tunceducation/src/course/presentation/cubit/course_cubit.dart';
+import 'package:tunceducation/src/course/presentation/views/course_details_screen.dart';
+import 'package:tunceducation/src/dashboard/presentation/views/dashboard.dart';
+import 'package:tunceducation/src/on_boarding/data/datasources/on_boarding_local_data_source.dart';
+import 'package:tunceducation/src/on_boarding/presentation/cubit/on_boarding/on_boarding_cubit.dart';
+import 'package:tunceducation/src/on_boarding/presentation/views/on_boarding_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart' as fui;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tunceducation/core/common/views/view.dart';
-import 'package:tunceducation/src/src.dart';
-
-Route<dynamic> generateRoute(RouteSettings settings) {
-  switch (settings.name) {
-    case OnBoardingScreen.routeName:
-      return _pageBuilder(
-        (_) => const OnBoardingScreen(),
-        settings: settings,
-      );
-    default:
-      return _pageBuilder(
-        (_) => const PageUnderConstruction(),
-        settings: settings,
-      );
-  }
-}
-
-PageRouteBuilder<dynamic> _pageBuilder(
-  Widget Function(BuildContext) page, {
-  required RouteSettings settings,
-}) {
-  return PageRouteBuilder(
-    settings: settings,
-    transitionsBuilder: (_, animation, __, child) => FadeTransition(
-      opacity: animation,
-      child: child,
-    ),
-    pageBuilder: (context, _, __) => page(context),
-  );
-}
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tunceducation/src/quick_access/presentation/views/exam_history_details_screen.dart';
+import '../../src/notifications/presentation/cubit/notification_cubit.dart';
+part 'router.main.dart';
